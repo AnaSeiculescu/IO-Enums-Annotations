@@ -8,9 +8,6 @@ import java.util.List;
 public class CSVContentParsing {
 	List<Athlete> biathlonAthletes = new ArrayList<>();
 
-//	CSVReading csvContent = new CSVReading(Paths.get("src/main/resources/athletesResults.csv"));
-//	List<String> results = csvContent.getBiathlonResults();
-
 	public void parsingTheFile(List<String> fileEntries, boolean hasHeaderRow) {
 
 		for (int i = hasHeaderRow ? 1 : 0; i < fileEntries.size(); i++) {

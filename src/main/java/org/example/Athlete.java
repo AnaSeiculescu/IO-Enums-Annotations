@@ -3,14 +3,12 @@ package org.example;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.Duration;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@ToString
 public class Athlete {
 
 	private int number;
@@ -18,10 +16,6 @@ public class Athlete {
 	private CountryCode country;
 	private TimeResult skiTimeResult;
 	private String shootingResult;
-
-//	public Athlete(String name) {
-//		this.name = name;
-//	}
 
 	public Duration updateTimeWithPenalties() {
 
@@ -36,4 +30,8 @@ public class Athlete {
 		return updatedTime;
 	}
 
+	@Override
+	public String toString() {
+		return name + " " + skiTimeResult;
+	}
 }
