@@ -9,9 +9,9 @@ import java.time.Duration;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Athlete {
 
-	private int number;
+public class Athlete {
+	private int competitionNumber;
 	private String name;
 	private CountryCode country;
 	private TimeResult skiTimeResult;
@@ -28,6 +28,17 @@ public class Athlete {
 			}
 		}
 		return updatedTime;
+	}
+
+	public int getMissedShots() {
+		int missedShots = 0;
+		for (int i = 0; i < shootingResult.length(); i++) {
+			char xOro = shootingResult.charAt(i);
+			if (xOro == 'o') {
+				missedShots ++;
+			}
+		}
+		return missedShots;
 	}
 
 	@Override

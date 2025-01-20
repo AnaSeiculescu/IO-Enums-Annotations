@@ -25,13 +25,21 @@ public class StandingCalculation {
 		}
 	}
 
+	public int addSecondsToInitialTime(Athlete athlete) {
+		return athlete.getMissedShots() * 10;
+	}
+
 	@Override
 	public String toString() {
 		String[] position = {"Winner", "Runner-up", "Third-place"};
 		List<String> finalStandingsToPrint = new ArrayList<>();
 
 		for (int i = 0; i < finalStandings.size(); i++) {
-			finalStandingsToPrint.add("\n" + position[i] + finalStandings.get(i) + " " + finalStandings.get(i).updateTimeWithPenalties());
+			finalStandingsToPrint.add(
+					"\n" + position[i] + " -" + finalStandings.get(i) +
+					" (" + finalStandings.get(i).getSkiTimeResult() + " + " +
+					addSecondsToInitialTime(finalStandings.get(i)) + ")"
+			);
 		}
 		return finalStandingsToPrint.toString();
 	}
