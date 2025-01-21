@@ -43,16 +43,34 @@ public class StandingCalculation {
 	 * @return the list of the final 3 standings
 	 */
 	public List<Athlete> getStandingCalculation(List<Athlete> biathlonAthletes) {
+		try {
+			if (biathlonAthletes == null) {
+				throw new NullPointerException("The provided list is null.");
+			}
+			if (biathlonAthletes.isEmpty()) {
+				throw new IllegalArgumentException("The provided list is empty.");
+			}
+			if (biathlonAthletes.size() < 3) {
+				throw new IllegalArgumentException("The list must contain at least 3 athletes.");
+			}
 
-//		List<Athlete> biathlonAthletes = csvContentParsing.biathlonAthletes;
-		Collections.sort(biathlonAthletes, new AthletesTimeComparator());
+			Collections.sort(biathlonAthletes, new AthletesTimeComparator());
 
+		} catch (NullPointerException | IllegalArgumentException e) {
+				System.out.println("Error: " + e.getMessage());
+				return Collections.emptyList();
+		} catch (Exception e) {
+			System.out.println("Unexpected error: " + e.getMessage());
+		}
+		return getFirstThree(biathlonAthletes);
+	}
+
+	private List<Athlete> getFirstThree(List<Athlete> biathlonAthletes) {
 		for (int i = 0; i < 3; i++) {
 			Athlete current = biathlonAthletes.get(i);
 			finalStandings.add(current);
 		}
 		return finalStandings;
-//		return toString(finalStandings);
 	}
 
 	public int addSecondsToInitialTime(Athlete athlete) {
@@ -75,16 +93,6 @@ public class StandingCalculation {
 
 	@Override
 	public String toString() {
-		String[] position = {"Winner", "Runner-up", "Third Place"};
-		List<String> finalStandingsToPrint = new ArrayList<>();
-
-		for (int i = 0; i < finalStandings.size(); i++) {
-			finalStandingsToPrint.add(
-					"\n" + position[i] + " - " + finalStandings.get(i) +
-							" (" + finalStandings.get(i).getSkiTimeResult() + " + " +
-							addSecondsToInitialTime(finalStandings.get(i)) + ")"
-			);
-		}
-		return finalStandingsToPrint.toString();
+		return printFinalStandings(finalStandings);
 	}
 }

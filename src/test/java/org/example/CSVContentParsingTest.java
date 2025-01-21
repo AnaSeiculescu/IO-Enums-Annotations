@@ -12,7 +12,6 @@ public class CSVContentParsingTest {
 
 	CSVContentParsing contentParser = new CSVContentParsing();
 	List<String> input = new ArrayList<>();
-//	List<Athlete> biathlonAthletes = new ArrayList<>();
 
 	@Test
 	public void testCSVContentParsingSingleInput() {
@@ -58,11 +57,11 @@ public class CSVContentParsingTest {
 		input = List.of("11,Umar Jorgson,30:27,xxxox,xxxxx,xxoxo");
 
 		//execute
-		String expectedResult = null;
+		String expectedResult = "[]";
 		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
 
 		//verify
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedResult, actualResult.toString());
 	}
 
 	@Test

@@ -39,6 +39,8 @@ public class CSVContentParsing {
 			} catch (IllegalArgumentException e) {
 				System.out.println("The file entries are incomplete or invalid. Please review the file!");
 				System.out.println("Error parsing line " + (i+1) + ". " + e.getMessage());
+			} catch (Exception e) {
+				throw new RuntimeException(e);
 			}
 		}
 		return biathlonAthletes;
