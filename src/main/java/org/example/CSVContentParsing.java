@@ -1,8 +1,6 @@
 package org.example;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CSVContentParsing {
@@ -17,7 +15,7 @@ public class CSVContentParsing {
 	 * The Athlete instances are stored inside an ArrayList.
 	 * @return the list of biathlon athletes
 	 */
-	public List<Athlete> parsingTheFile(List<String> fileEntries, boolean hasHeaderRow) {
+	public List<Athlete> parsingFileContent(List<String> fileEntries, boolean hasHeaderRow) {
 
 		for (int i = hasHeaderRow ? 1 : 0; i < fileEntries.size(); i++) {
 			String currentEntry = fileEntries.get(i);

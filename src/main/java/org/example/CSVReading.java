@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 public class CSVReading {
 
-	private List<String> biathlonResults;
+	private List<String> biathlonResults = new ArrayList<>();
 	private final Path path;
 
 	public CSVReading(Path path) {
@@ -38,7 +39,7 @@ public class CSVReading {
 	 * @return the biathlon results
 	 */
 	public List<String> getBiathlonResults() {
-		if (biathlonResults == null) {
+		if (biathlonResults.isEmpty()) {
 			readFile();
 		}
 		return biathlonResults;
