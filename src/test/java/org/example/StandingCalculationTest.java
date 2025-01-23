@@ -2,7 +2,6 @@ package org.example;
 
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -18,7 +17,7 @@ public class StandingCalculationTest {
 		//execute
 		List<Athlete> biathlonAthletes = standingCalculation.getBiathlonAthletes();
 		List<Athlete> finalStandings = standingCalculation.getStandingCalculation(biathlonAthletes);
-		String actualResult = standingCalculation.printFinalStandings(finalStandings);
+		String actualResult = standingCalculation.finalStandingsString(finalStandings);
 
 		String expectedResult = "[\nWinner - Piotr Smitzer 30:10 (30:10 + 0), \nRunner-up - Jimmy Smiles 29:15 (29:15 + 60), \nThird Place - Umar Jorgson 30:27 (30:27 + 30)]";
 
@@ -37,7 +36,7 @@ public class StandingCalculationTest {
 		List<Athlete> finalStandings = standingCalculation.getStandingCalculation(biathlonAthletes);
 
 		String expectedResult = "[]";
-		String actualResult = standingCalculation.printFinalStandings(finalStandings);
+		String actualResult = standingCalculation.finalStandingsString(finalStandings);
 
 		//verify
 		assertEquals(expectedResult, actualResult);
@@ -54,7 +53,7 @@ public class StandingCalculationTest {
 		List<Athlete> finalStandings = standingCalculation.getStandingCalculation(biathlonAthletes);
 
 		String expectedResult = "[]";
-		String actualResult = standingCalculation.printFinalStandings(finalStandings);
+		String actualResult = standingCalculation.finalStandingsString(finalStandings);
 
 		//verify
 		assertEquals(expectedResult, actualResult);

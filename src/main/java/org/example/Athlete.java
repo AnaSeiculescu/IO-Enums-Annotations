@@ -1,21 +1,35 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+
 import java.time.Duration;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Getter
 @Setter
 @AllArgsConstructor
 
 public class Athlete {
+	@JsonIgnore
 	private int competitionNumber;
+
+	@JsonProperty("name")
 	private String name;
+
+	@JsonIgnore
 	private CountryCode country;
+
+	@JsonProperty("timeResult")
 	private TimeResult skiTimeResult;
+
+	@JsonIgnore
 	private String shootingResult;
+
+	public Athlete() {}
 
 	/**
 	 * Update time with penalties.
@@ -41,6 +55,8 @@ public class Athlete {
 	 * Iterates the shooting results and counts the "o" letters, for missing shots.
 	 * @return the missed shots
 	 */
+
+	@JsonIgnore
 	public int getMissedShots() {
 		int missedShots = 0;
 		for (int i = 0; i < shootingResult.length(); i++) {

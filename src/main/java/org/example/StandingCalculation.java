@@ -77,7 +77,7 @@ public class StandingCalculation {
 		return athlete.getMissedShots() * 10;
 	}
 
-	public String printFinalStandings(List<Athlete> finalStandings) {
+	public String finalStandingsString(List<Athlete> finalStandings) {
 		String[] position = {"Winner", "Runner-up", "Third Place"};
 		List<String> finalStandingsToPrint = new ArrayList<>();
 
@@ -91,8 +91,27 @@ public class StandingCalculation {
 		return finalStandingsToPrint.toString();
 	}
 
+//	public String finalStandingsStringForJSON(List<Athlete> finalStandings) {
+//		String[] position = {"Winner", "Runner-up", "Third Place"};
+////		List<String> finalStandingsToPrint = new ArrayList<>();
+//		String finalStandingsToPrint = "";
+//		for (int i = 0; i < finalStandings.size(); i++) {
+//			if (i == 0) {
+//				finalStandingsToPrint += "{";
+//			}
+//			finalStandingsToPrint = finalStandingsToPrint +
+//					"\n" + position[i] + " - " + finalStandings.get(i) +
+//							" (" + finalStandings.get(i).getSkiTimeResult() + " + " +
+//							addSecondsToInitialTime(finalStandings.get(i)) + "),";
+//			if (i == finalStandings.size() - 1) {
+//				finalStandingsToPrint += "\n}";
+//			}
+//		}
+//		return finalStandingsToPrint;
+//	}
+
 	@Override
 	public String toString() {
-		return printFinalStandings(finalStandings);
+		return finalStandingsString(finalStandings);
 	}
 }
