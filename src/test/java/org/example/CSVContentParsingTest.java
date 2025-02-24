@@ -21,7 +21,7 @@ public class CSVContentParsingTest {
 
 		//execute
 		String expectedResult = "[Umar Jorgson 30:27]";
-		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
+		List<Athlete> actualResult = contentParser.parseFileContent(input, false);
 
 		//verify
 		assertEquals(expectedResult, actualResult.toString());
@@ -33,7 +33,7 @@ public class CSVContentParsingTest {
 
 		//execute
 		String expectedResult = "[]";
-		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
+		List<Athlete> actualResult = contentParser.parseFileContent(input, false);
 
 		//verify
 		assertEquals(expectedResult, actualResult.toString());
@@ -46,7 +46,7 @@ public class CSVContentParsingTest {
 
 		//execute
 		String expectedResult = "[Umar Jorgson 30:27, Jimmy Smiles 29:15]";
-		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
+		List<Athlete> actualResult = contentParser.parseFileContent(input, false);
 
 		//verify
 		assertEquals(expectedResult, actualResult.toString());
@@ -59,7 +59,7 @@ public class CSVContentParsingTest {
 
 		//execute
 		String expectedResult = "[]";
-		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
+		List<Athlete> actualResult = contentParser.parseFileContent(input, false);
 
 		//verify
 		assertEquals(expectedResult, actualResult.toString());
@@ -72,7 +72,7 @@ public class CSVContentParsingTest {
 
 		//execute
 		String expectedResult = "[Umar Jorgson 30:27]";
-		List<Athlete> actualResult = contentParser.parsingFileContent(input, false);
+		List<Athlete> actualResult = contentParser.parseFileContent(input, false);
 
 		//verify
 		assertEquals(expectedResult, actualResult.toString());

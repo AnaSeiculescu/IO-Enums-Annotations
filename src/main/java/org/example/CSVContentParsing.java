@@ -15,7 +15,7 @@ public class CSVContentParsing {
 	 * The Athlete instances are stored inside an ArrayList.
 	 * @return the list of biathlon athletes
 	 */
-	public List<Athlete> parsingFileContent(List<String> fileEntries, boolean hasHeaderRow) {
+	public List<Athlete> parseFileContent(List<String> fileEntries, boolean hasHeaderRow) {
 
 		for (int i = hasHeaderRow ? 1 : 0; i < fileEntries.size(); i++) {
 			String currentEntry = fileEntries.get(i);
@@ -34,13 +34,11 @@ public class CSVContentParsing {
 
 				biathlonAthletes.add(athlete);
 
-				//		Collections.sort(biathlonAthletes, new AthletesTimeComparator());
-
 			} catch (IllegalArgumentException e) {
 				System.out.println("The file entries are incomplete or invalid. Please review the file!");
 				System.out.println("Error parsing line " + (i+1) + ". " + e.getMessage());
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				System.out.println("Something went wrong while parsing the file: " + e.getMessage());;
 			}
 		}
 		return biathlonAthletes;

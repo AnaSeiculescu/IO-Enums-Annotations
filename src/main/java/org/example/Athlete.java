@@ -41,12 +41,9 @@ public class Athlete {
 
 		Duration updatedTime = Duration.ofMinutes(skiTimeResult.getMinutes()).plusSeconds(skiTimeResult.getSeconds());
 
-		for (int i = 0; i < shootingResult.length(); i++) {
-			char xOro = shootingResult.charAt(i);
-			if (xOro == 'o') {
-				updatedTime = updatedTime.plusSeconds(10);
-			}
-		}
+		int missedShots = getMissedShots();
+		updatedTime = updatedTime.plusSeconds(10 * missedShots);
+
 		return updatedTime;
 	}
 

@@ -18,7 +18,8 @@ public class CSVParsing {
 			List<String> standings = Files.readAllLines(path);
 			System.out.println(standings);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			System.out.println(e.getMessage());
+			System.exit(1);
 		}
 	}
 

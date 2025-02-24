@@ -15,15 +15,9 @@ public class StandingCalculation {
 	private CSVContentParsing csvContentParsing;
 	private List<Athlete> biathlonAthletes;
 
-//	CSVReading csvContent = new CSVReading(Paths.get("src/main/resources/athletesResults.csv"));
-//	List<String> results = csvContent.getBiathlonResults();
-//
-//	CSVContentParsing csvContentParsing = new CSVContentParsing();
-//	List<Athlete> biathlonAthletes = csvContentParsing.parsingFileContent(results, true);
-
 	public StandingCalculation(List<String> results) {
 		this.csvContentParsing = new CSVContentParsing();
-		this.biathlonAthletes = csvContentParsing.parsingFileContent(results, false);
+		this.biathlonAthletes = csvContentParsing.parseFileContent(results, false);
 	}
 
 	public StandingCalculation() {
@@ -31,7 +25,7 @@ public class StandingCalculation {
 		this.results = csvContent.getBiathlonResults();
 
 		this.csvContentParsing = new CSVContentParsing();
-		this.biathlonAthletes = csvContentParsing.parsingFileContent(results, true);
+		this.biathlonAthletes = csvContentParsing.parseFileContent(results, true);
 	}
 
 	/**
@@ -56,7 +50,7 @@ public class StandingCalculation {
 
 			Collections.sort(biathlonAthletes, new AthletesTimeComparator());
 
-		} catch (NullPointerException | IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 				System.out.println("Error: " + e.getMessage());
 				return Collections.emptyList();
 		} catch (Exception e) {
@@ -78,7 +72,7 @@ public class StandingCalculation {
 	}
 
 	public String finalStandingsString(List<Athlete> finalStandings) {
-		String[] position = {"Winner", "Runner-up", "Third Place"};
+		Positions[] position = Positions.values();
 		List<String> finalStandingsToPrint = new ArrayList<>();
 
 		for (int i = 0; i < finalStandings.size(); i++) {
@@ -90,25 +84,6 @@ public class StandingCalculation {
 		}
 		return finalStandingsToPrint.toString();
 	}
-
-//	public String finalStandingsStringForJSON(List<Athlete> finalStandings) {
-//		String[] position = {"Winner", "Runner-up", "Third Place"};
-////		List<String> finalStandingsToPrint = new ArrayList<>();
-//		String finalStandingsToPrint = "";
-//		for (int i = 0; i < finalStandings.size(); i++) {
-//			if (i == 0) {
-//				finalStandingsToPrint += "{";
-//			}
-//			finalStandingsToPrint = finalStandingsToPrint +
-//					"\n" + position[i] + " - " + finalStandings.get(i) +
-//							" (" + finalStandings.get(i).getSkiTimeResult() + " + " +
-//							addSecondsToInitialTime(finalStandings.get(i)) + "),";
-//			if (i == finalStandings.size() - 1) {
-//				finalStandingsToPrint += "\n}";
-//			}
-//		}
-//		return finalStandingsToPrint;
-//	}
 
 	@Override
 	public String toString() {
